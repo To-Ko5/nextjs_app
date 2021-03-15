@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Footer from './common/Footer'
 
 interface Layout {
-  children: React.ReactChild
+  children?: React.ReactNode
   title?: string
 }
 
