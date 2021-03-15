@@ -12,7 +12,9 @@ const Layout = ({ children, title = 'next.js_app' }: Layout) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {children}
+      <main className="flex flex-1 justify-center items-center w-screen flex-col">
+        {children}
+      </main>
       <Footer />
     </div>
   )
