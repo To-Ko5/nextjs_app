@@ -1,11 +1,12 @@
-import React from 'react'
+import Layout from '../components/Layout'
+import Auth from '../components/auth/Auth'
 
-const index = () => {
+const home = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout title="login">
+      <Auth />
+    </Layout>
   )
 }
 
-export default index
+export default home
