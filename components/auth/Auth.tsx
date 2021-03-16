@@ -50,9 +50,11 @@ const Auth = () => {
             }
           }
         )
+
         if (response.status === 400) {
           throw 'authentication failed'
         }
+
         login()
       } catch (err) {
         alert(err)
