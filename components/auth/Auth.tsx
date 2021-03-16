@@ -25,7 +25,6 @@ const Auth = () => {
 
       if (response.status === 400) {
         throw 'authentication failed'
-        return
       }
 
       const options = { path: '/' }
@@ -43,7 +42,7 @@ const Auth = () => {
     } else {
       try {
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_RESTAPI_URL}ap/register/`,
+          `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/register/`,
           { username, password },
           {
             headers: {
@@ -53,7 +52,6 @@ const Auth = () => {
         )
         if (response.status === 400) {
           throw 'authentication failed'
-          return
         }
         login()
       } catch (err) {
