@@ -12,7 +12,7 @@ export async function getAllTasksData() {
   return response.data
 }
 
-export async function getAllPostIds() {
+export async function getAllTaskIds() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`
   )
@@ -32,7 +32,7 @@ export async function getAllPostIds() {
   })
 }
 
-export async function getPostData(id: any) {
+export async function getTaskData(id: any) {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-task/${id}/`
   )
