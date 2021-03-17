@@ -2,12 +2,21 @@ import Layout from '../components/Layout'
 import Link from 'next/link'
 import Task from '../components/task/task'
 import { getAllTasksData } from '../lib/task'
+import useSWR from 'swr'
+
+const fetcher = (url: any) => fetch(url).then((res) => res.json())
+const apiUrl = `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`
 
 const task = ({ tasks }: any) => {
+  const { data: tasksData, mutate } = useSWR(apiUrl, fetcher, {
+    initialData: tasks
+  })
+
   return (
     <Layout title="task">
       <ul className="mb-20">
-        {tasks && tasks.map((task: any) => <Task key={task.id} task={task} />)}
+        {tasksData &&
+          tasks.map((task: any) => <Task key={task.id} task={task} />)}
       </ul>
       <Link href="/main">
         <a>
