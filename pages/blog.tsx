@@ -1,10 +1,15 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import { getAllPostsData } from '../lib/posts'
+import Post from '../components/blog/Post'
 
-const blog = ({ posts }) => {
+const blog = ({ posts }: any) => {
+  console.log(posts)
   return (
     <Layout title="blog">
+      <ul className="mb-20">
+        {posts && posts.map((post: any) => <Post key={post.id} post={post} />)}
+      </ul>
       <Link href="/main">
         <a>
           <svg
