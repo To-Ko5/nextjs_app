@@ -4,7 +4,6 @@ import { getAllPostsData } from '../lib/posts'
 import Post from '../components/blog/Post'
 
 const blog = ({ posts }: any) => {
-  console.log(posts)
   return (
     <Layout title="blog">
       <ul className="mb-20">
