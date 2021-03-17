@@ -32,3 +32,16 @@ export async function getAllPostsIds() {
     }
   })
 }
+
+export async function getPostData(id) {
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-post/${id}/`
+  )
+  if (response.status === 400) {
+    throw new Error('posts failed')
+  }
+  const post = response.data
+  return {
+    post
+  }
+}
