@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import Task from '../components/task/task'
@@ -11,6 +12,10 @@ const task = ({ tasks }: any) => {
   const { data: tasksData, mutate } = useSWR(apiUrl, fetcher, {
     initialData: tasks
   })
+
+  useEffect(() => {
+    mutate()
+  }, [])
 
   return (
     <Layout title="task">
@@ -46,6 +51,7 @@ export default task
 export async function getStaticProps() {
   const tasks = await getAllTasksData()
   return {
-    props: { tasks }
+    props: { tasks },
+    revalidate: 3
   }
 }
