@@ -18,22 +18,26 @@ export async function getAllPostsData() {
   return response.data
 }
 
-export async function getAllPostsIds() {
+export async function getAllPostIds() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-post`
   )
   if (response.status === 400) {
     throw new Error('posts failed')
   }
-  const res = response.data
+
+  const res = await response.data
+
   return res.map((post: post) => {
-    params: {
-      id: post.id
+    return {
+      params: {
+        id: String(post.id)
+      }
     }
   })
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: any) {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-post/${id}/`
   )
