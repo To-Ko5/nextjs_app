@@ -9,7 +9,7 @@ interface post {
 
 export async function getAllPostsData() {
   const response = await axios.get(
-    'https://nextjs-rest-api1.herokuapp.com/api/list-post'
+    `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-post`
   )
 
   if (response.status === 400) {
@@ -20,7 +20,7 @@ export async function getAllPostsData() {
 
 export async function getAllPostsIds() {
   const response = await axios.get(
-    'https://nextjs-rest-api1.herokuapp.com/api/list-post'
+    `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-post`
   )
   if (response.status === 400) {
     throw new Error('posts failed')
