@@ -15,6 +15,7 @@ export async function getAllPostsData() {
   if (response.status === 400) {
     throw new Error('posts failed')
   }
+
   return response.data
 }
 
@@ -22,6 +23,7 @@ export async function getAllPostIds() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-post`
   )
+
   if (response.status === 400) {
     throw new Error('posts failed')
   }
@@ -41,10 +43,13 @@ export async function getPostData(id: any) {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-post/${id}/`
   )
+
   if (response.status === 400) {
     throw new Error('posts failed')
   }
+
   const post = response.data
+
   return {
     post
   }
