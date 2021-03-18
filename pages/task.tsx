@@ -21,7 +21,9 @@ const task = ({ tasks }: any) => {
     <Layout title="task">
       <ul className="mb-20">
         {tasksData &&
-          tasksData.map((task: any) => <Task key={task.id} task={task} />)}
+          tasksData.map((task: any) => (
+            <Task key={task.id} task={task} taskDeleted={mutate} />
+          ))}
       </ul>
       <Link href="/main">
         <a>

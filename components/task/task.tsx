@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const cookie = new Cookie()
 
-const task = ({ task }: any) => {
+const task = ({ task, taskDeleted }: any) => {
   const deleteTask = async () => {
     const response = await axios.delete(
       `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/${task.id}`,
@@ -22,6 +22,7 @@ const task = ({ task }: any) => {
     if (response.status === 204) {
       alert('Deleted')
     }
+    taskDeleted()
   }
 
   return (
