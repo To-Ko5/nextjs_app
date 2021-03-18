@@ -1,6 +1,29 @@
 import Link from 'next/link'
+import Cookie from 'universal-cookie'
+import axios from 'axios'
+
+const cookie = new Cookie()
 
 const task = ({ task }: any) => {
+  const deleteTask = async () => {
+    const response = await axios.delete(
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/${task.id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `JWT ${cookie.get('access_token')}`
+        }
+      }
+    )
+    if (response.status === 401) {
+      alert('JWT Token not valid')
+    }
+
+    if (response.status === 204) {
+      alert('Deleted')
+    }
+  }
+
   return (
     <div>
       <span>{task.id}</span>
@@ -12,6 +35,7 @@ const task = ({ task }: any) => {
       </Link>
       <div className="float-right ml-20">
         <svg
+          onClick={deleteTask}
           className="w-6 h-6 mr-2 cursor-pointer"
           fill="none"
           stroke="currentColor"
