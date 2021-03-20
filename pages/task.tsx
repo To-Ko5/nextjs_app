@@ -5,7 +5,10 @@ import Task from '../components/task/task'
 import { getAllTasksData } from '../lib/task'
 import useSWR from 'swr'
 
-const fetcher = (url: any) => fetch(url).then((res) => res.json())
+const fetcher = (url: any) =>
+  fetch(url).then((res) => {
+    res.json()
+  })
 const apiUrl = `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`
 
 const task = ({ tasks }: any) => {
