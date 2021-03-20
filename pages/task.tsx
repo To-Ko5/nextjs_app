@@ -7,7 +7,7 @@ import useSWR from 'swr'
 
 const fetcher = (url: any) =>
   fetch(url).then((res) => {
-    res.json()
+    return res.json()
   })
 const apiUrl = `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`
 
