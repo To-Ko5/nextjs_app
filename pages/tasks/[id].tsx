@@ -5,10 +5,13 @@ import { useRouter } from 'next/router'
 import { getAllTaskIds, getTaskData } from '../../lib/task'
 import useSWR from 'swr'
 
-const fetcher = (url: any) => fetch(url).then((res) => res.json())
+const fetcher = (url: any) =>
+  fetch(url).then((res) => {
+    res.json()
+  })
 const apiUrl = `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`
 
-const post = ({ taskData, id }: any) => {
+const post = ({ id, taskData }: any) => {
   const router = useRouter()
   const { data: task, mutate } = useSWR(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-task/${id}`,
@@ -68,8 +71,8 @@ export async function getStaticProps({ params }: any) {
   const { task: taskData } = await getTaskData(params.id)
   return {
     props: {
-      id: taskData.id,
-      taskData
+      taskData,
+      id: taskData.id
     },
     revalidate: 3
   }
