@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import Cookie from 'universal-cookie'
 import axios from 'axios'
+import { useContext } from 'react'
+import { StateContext } from '../../context/StateContext'
 
 const cookie = new Cookie()
 
 const task = ({ task, taskDeleted }: any) => {
+  const { setSelectedTask }: any = useContext(StateContext)
   const deleteTask = async () => {
     const response = await axios.delete(
       `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/${task.id}`,
@@ -36,6 +39,7 @@ const task = ({ task, taskDeleted }: any) => {
       </Link>
       <div className="float-right ml-20">
         <svg
+          onClick={() => setSelectedTask(task)}
           className="w-6 h-6 float-left cursor-pointer"
           fill="none"
           stroke="currentColor"
