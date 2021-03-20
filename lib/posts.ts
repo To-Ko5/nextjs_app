@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-interface post {
+interface Post {
   id: number
   title: string
   content: string
@@ -30,7 +30,7 @@ export async function getAllPostIds() {
 
   const res = await response.data
 
-  return res.map((post: post) => {
+  return res.map((post: Post) => {
     return {
       params: {
         id: String(post.id)
