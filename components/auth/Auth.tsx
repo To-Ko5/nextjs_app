@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Cookie from 'universal-cookie'
 import axios from 'axios'
+import { FormEvent } from 'react'
 
 const cookie = new Cookie()
 
@@ -35,7 +36,7 @@ const Auth = () => {
     }
   }
 
-  const authUser = async (e: any) => {
+  const authUser = async (e: FormEvent) => {
     e.preventDefault()
     if (isLogin) {
       login()
