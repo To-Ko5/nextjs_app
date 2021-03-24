@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/router'
 import Cookie from 'universal-cookie'
 import axios from 'axios'
-import { FormEvent } from 'react'
 
 const cookie = new Cookie()
 
