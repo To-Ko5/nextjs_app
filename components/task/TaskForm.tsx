@@ -1,8 +1,7 @@
-import { useContext } from 'react'
+import { useContext, FormEvent } from 'react'
 import { StateContext } from '../../context/StateContext'
 import Cookie from 'universal-cookie'
 import axios from 'axios'
-import { FormEvent } from 'react'
 
 const cookie = new Cookie()
 
